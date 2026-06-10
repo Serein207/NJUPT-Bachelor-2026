@@ -1,19 +1,19 @@
-## 南京邮电大学本科毕业设计Latex模板
+## 南京邮电大学本科毕业设计（论文）LaTeX模板（2026届适配）
 
-本项目于2025年2月fork自[dhiyu/NJUPT-Bachelor](https://github.com/dhiyu/NJUPT-Bachelor)。由于源仓库作者似乎已不再维护，本仓库合并了源仓库的问题PR，并针对我使用过程中遇到的一些问题进行了小部分修改，希望能帮到后来者。
+本项目基于[musnows/NJUPT-Bachelor](https://github.com/musnows/NJUPT-Bachelor)继续维护，并对照南京邮电大学 2026 届毕业设计（论文）理工艺教类 Word 模板做了增量适配。上游模板本身源自[dhiyu/NJUPT-Bachelor](https://github.com/dhiyu/NJUPT-Bachelor)，并合并了若干历史模板的格式修正；本 Fork 主要聚焦 2026 届封面、摘要、目录、关键词等格式差异。
 
 ### 介绍
 
-本模板是《南京邮电大学本科生(理工艺教类)毕业设计》的LaTex模板，该模板由[NJUPThesis-Bachelor](https://github.com/imguozr/NJUPThesis-Bachelor)以及[lemoxiao](https://github.com/lemoxiao)修改过的[NJUPThesis-Bachelor](https://github.com/lemoxiao/NJUPThesis-Scholar)演化而来，并做了大量的修改工作和完善工作。
+本模板是《南京邮电大学本科生（理工艺教类）毕业设计（论文）》的 LaTeX 模板，该模板由[NJUPThesis-Bachelor](https://github.com/imguozr/NJUPThesis-Bachelor)以及[lemoxiao](https://github.com/lemoxiao)修改过的[NJUPThesis-Bachelor](https://github.com/lemoxiao/NJUPThesis-Scholar)演化而来，并在上游 `musnows/NJUPT-Bachelor` 的基础上继续做 2026 届格式适配。
 
-慕雪在原作者[dhiyu](https://github.com/dhiyu/NJUPT-Bachelor)的基础上针对2025年本科毕设论文模板的要求做了对应的修正。
+上游维护者在原作者[dhiyu](https://github.com/dhiyu/NJUPT-Bachelor)的基础上针对2025年本科毕设论文模板的要求做了对应的修正；当前 Fork 在此基础上继续补充 2026 届模板要求中涉及的封面下划线样式、楷体、摘要/目录页码、关键词接排等调整。
 
 * 2021年doc模板文件：[2021 word template](./2021-word-template.rar)
 * 2025年doc模板文件：[2025 word template](./2025-word-template.zip)
 
 ### 核心特征
 
-- 使用了GBT-7714标准引用格式，经过我的研究，在我以上提到的模板中，其参考文献格式是最大的问题。经过对教务处给出的Word版本的模板进行研究，我发现其与GBT-7714模板高度一致，有理由认为应该就是GBT-7714。因此在模板中我使用了GBT7714引用格式。
+- 使用了GBT-7714标准引用格式。上游模板对教务处给出的 Word 版本模板进行研究后，认为其参考文献格式与 GBT-7714 高度一致，因此在模板中使用 GBT-7714 引用格式。
 - 修正了封面不在中间的问题
 - 修改了页面参数，包括页边距、行距、段间距，页眉、页尾等等，和官方Word保持一致。
 - 修改了结束语、致谢、参考文献的标题格式，修改了附录的格式。
@@ -35,18 +35,14 @@
 
 ### 使用方式（必看）
 
-若你对LaTex不熟悉，可以直接使用[overleaf](https://cn.overleaf.com/)或[TexPage](https://www.texpage.com/)（推荐后者）在线编辑。好处是方便，在TexPage网站上注册登录即可免费使用，本模板已经发布至TexPage的模板库，直接选用本模板创建项目即可：[南京邮电大学本科生毕业设计论文模板](https://www.texpage.com/zh/template/a3b8fd7d-3d1c-419b-b2dc-1b1102f004ec)，如下图所示：
+若你对 LaTeX 不熟悉，可以使用 [Overleaf](https://cn.overleaf.com/) 或 [TexPage](https://www.texpage.com/) 等在线编辑器。下载本仓库 zip 后通过“上传项目”的方式创建在线项目，在线使用时请以本仓库代码为准。
 
-![texpage截图](./pic/texpage截图.png)
+**温馨提醒**：数据无价，使用在线网站编辑毕设时，请定期下载论文 PDF 和 TeX 源码到本地备份。
 
-> TexPage手动使用模板方式：新建项目时选择“上传项目”，下载本仓库zip上传，上传之后即可在线编辑，和直接选择模板编辑效果相同。
-
-**温馨提醒**：数据无价，使用在线网站编辑你的毕设时，一定要记得多备份！在TexPage页面右上角三个点处点击就可以直接下载论文PDF和tex源码，一定要定期将tex源码下载到电脑本地备份！数据无价！
-
-如果你更在乎数据安全和稳定性，个人建议在**本地**编辑和编译，避免无网络、网站故障情况下无法编辑论文。
+如果更在乎数据安全和稳定性，建议在**本地**编辑和编译，避免无网络、网站故障情况下无法编辑论文。
 
 1. 对于 `Windows` 系统，直接安装 `TeX Live` ，编辑器推荐使用`TeXstudio`。
-2. `MacOS` 经过 [Leo Y Chen](https://github.com/xsro) 和慕雪的测试，基本无问题，通过 `brew install mactex` 安装mactex环境即可（需要先安装brew）。
+2. `MacOS` 可通过 `brew install mactex` 安装 MacTeX 环境（需要先安装 Homebrew）。
 3. [Leo Y Chen](https://github.com/xsro)提供了`vscode`的latex编译配置文件，存放在`.vscode/`文件夹中。vscode 需要安装 [LaTeX Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop) 插件。安装完毕此插件后，修改`main.tex`并保存，就会自动触发编译流程，更新`main.pdf`。
 
 ### 编译过程
@@ -55,7 +51,7 @@
 
 `XeLaTeX` -> `BibTeX` -> `XeLaTeX` -> `XeLaTeX`
 
-一般来说我们最常用的是`TeXstudio`，在里面的选项->设置->构建中可以自己编写编译链。如果使用vscode，本模板已经做好了LaTeX Workshop插件的编译流程配置，参考上文。
+常用编辑器如 `TeXstudio` 可以在选项->设置->构建中自行配置编译链。如果使用 vscode，本模板已经做好了 LaTeX Workshop 插件的编译流程配置，参考上文。
 
 ### 字数统计
 
@@ -67,12 +63,12 @@
 
 ### 已知问题
 
-1. ~~目前来看唯一的缺陷可能是当时编写时比较急促，自身水平又比较差，在一些标题和题注的格式上，为了和官方Word模板几乎相同，我在里面加了一些空格或是间隔，本身是不推荐大家这样修改模板的，会造成在正文文段中引用时也出现空格和间隔~~。目前此问题已由[Leo Y Chen](https://github.com/xsro)解决。暂时无问题，欢迎大家反馈。
+1. ~~早期模板在一些标题和题注格式上为了贴近官方 Word 模板加入了额外空格或间隔，可能影响正文引用效果~~。目前此问题已由[Leo Y Chen](https://github.com/xsro)解决。暂时无问题，欢迎反馈。
 2. everypage的功能已经被官方支持所以不再需要这个包，所以这个包会警告，参见[ref](https://stackoverflow.com/questions/64921954/how-to-solve-latex-package-warning-for-everypage)。
 
 #### Fork后的修改点
 
-慕雪Fork本项目后的修改点（按提交顺序）：
+上游 `musnows/NJUPT-Bachelor` 相对更早模板的修改点（按提交顺序）：
 
 - 摘要名称修改：中文摘要改为`摘要`，英文摘要改成`ABSTRACT`；
 - 新增附录自动ABCD编号：附录可以通过多个`\thesisappendix`自动插入附录A、附录B，修复大纲中附录A中字母A字号较小的问题；
@@ -87,11 +83,23 @@
 - 新增`\createdate`作为原创性声明日期，一般情况下原创性声明日期和论文封面结束日期一致；
 - 新增作者签名`\authorsign`和导师签名`\advisorsign`，分别嵌入至原创性声明和论文封面，**注意签名的图片文件上下不要留空白**，否则会影响嵌入签名效果；
 
+#### Serein207 Fork后的修改点
+
+本 Fork 在上游 `musnows/NJUPT-Bachelor` 的基础上继续维护。本节只记录相对上游 `origin/master` 的实际增量差异：
+
+- 字体加载方式改为使用仓库 `Font/` 目录中的 Times、宋体、黑体、楷体字体文件，减少不同系统字体名称不一致带来的编译差异；
+- 图表标题由悬挂格式改为居中普通格式，标题宽度调整为 `\textwidth`；
+- `subsubsection` 标题字号由小四号调整为四号黑体，与 Word 模板中小节标题要求保持一致；
+- 中文摘要标题、结束语、致谢和附录标题显式使用黑体，附录标题改为顶格显示；
+- 封面信息表改为按信息栏居中排版，题目、专业、学生姓名、班级学号、指导教师、指导单位统一使用封面单元格格式；封面字段名使用“指导教师”；
+- 摘要和目录环境在多页情况下保持无页眉页脚样式，正文从第一章开始恢复页眉页脚和阿拉伯页码；
+- 中文关键词和英文 Key words 去掉额外的段前空白，按模板说明与摘要正文接排。
+
 ### Q&A
 
-由于本人水平所限，如果有问题，欢迎大家提出issue，也欢迎解决后提pull request。
+模板仍可能存在不足，如有问题欢迎提出 issue，也欢迎解决后提交 pull request。
 
-如果觉得好用，你可以在致谢部分留下**本论文采用基于 LaTeX 的南京邮电大学本科论文模版编写**，欢迎附上本GitHub repo的链接。
+如果觉得好用，可以在致谢部分留下**本论文采用基于 LaTeX 的南京邮电大学本科论文模版编写**，并附上本 GitHub repo 的链接。
 
 ### 贡献者名单
 
