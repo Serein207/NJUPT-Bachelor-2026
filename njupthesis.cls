@@ -353,13 +353,16 @@
 % 中文关键字
 \newcommand{\chinesekeyword}[1]{
   \par
+  \begingroup
   \noindent
-    \begin{minipage}[t]{48pt}
-      \noindent{\heiti{关键词\chinesecolon }}
-    \end{minipage}
-    \begin{minipage}[t]{0.8\linewidth - 48pt}
-      #1
-    \end{minipage}
+  \makebox[48pt][l]{\heiti{关键词\chinesecolon}}%
+  \begin{minipage}[t]{\dimexpr\linewidth-48pt\relax}
+    \raggedright
+    \hyphenpenalty=10000
+    \exhyphenpenalty=10000
+    #1
+  \end{minipage}\par
+  \endgroup
 }
 
 % 英文摘要
@@ -377,13 +380,16 @@
 % 英文关键字
 \newcommand{\englishkeyword}[1]{
   \par
-  \noindent\begin{minipage}[t]{2.1cm}
-      \noindent\textbf{Key words:}
-    \end{minipage}
-    \begin{minipage}[t]{
-      0.8\linewidth - 2.1cm}
-        #1
-    \end{minipage}
+  \begingroup
+  \noindent
+  \makebox[2.3cm][l]{\textbf{Key words:}}%
+  \begin{minipage}[t]{\dimexpr\linewidth-2.3cm\relax}
+    \raggedright
+    \hyphenpenalty=10000
+    \exhyphenpenalty=10000
+    #1
+  \end{minipage}\par
+  \endgroup
 }
 
 \AddEverypageHook{\addtocontents{toc}{
