@@ -31,28 +31,24 @@
 \RequirePackage{ifplatform}
 
 % 各个系统下字体的引入
-\ifwindows
-  \setallmainfonts{Times New Roman}
-  \setCJKmainfont[AutoFakeBold=true]{SimSun}
-  \newCJKfontfamily{\heiti}{SimHei}
-  \newCJKfontfamily{\kaiti}{KaiTi}
-\else
-	\ifmacosx
-	  \setallmainfonts{Times New Roman}
-	  \setCJKmainfont[AutoFakeBold=true]{SimSun}
-	  \newCJKfontfamily{\heiti}{SimHei}
-	  \newCJKfontfamily{\kaiti}{KaiTi}
-	\else
-	  \setCJKmainfont[AutoFakeBold=true]{SimSun}
-	  \newCJKfontfamily{\heiti}{SimHei}
-	  \newCJKfontfamily{\kaiti}{KaiTi}
-	  \setallmainfonts[
-	    BoldFont=Times New Roman Bold,
-	    ItalicFont=Times New Roman Italic,
-	    BoldItalicFont=Times New Roman Bold Italic,
-	  ]{Times New Roman}
-	\fi
-\fi
+\setallmainfonts[
+  Path=Font/,
+  BoldFont=timesbd.ttf,
+  ItalicFont=timesi.ttf,
+  BoldItalicFont=timesbi.ttf,
+]{times.ttf}
+\setCJKmainfont[
+  Path=Font/,
+  AutoFakeBold=true,
+]{simsun.ttc}
+\newCJKfontfamily{\heiti}[
+  Path=Font/,
+  AutoFakeBold=true,
+]{simhei.ttf}
+\newCJKfontfamily{\kaiti}[
+  Path=Font/,
+  AutoFakeBold=true,
+]{KaiTi.ttf}
 
 \RequirePackage{zhnumber}
 \RequirePackage{pifont}
@@ -190,9 +186,9 @@
 \renewcommand {\thefigure} {\arabic{chapter}.\arabic{figure}}
 
 % 图、表标题格式设置
-\captionsetup{format=hang}
+\captionsetup{format=plain, justification=centering, singlelinecheck=false}
 \DeclareCaptionLabelSeparator{custom}{\chinesespace} % 2025模板修改，图序号和图描述之间只有一个全角空格
-\captionsetup{width=\textwidth - 42pt,labelsep=custom}
+\captionsetup{width=\textwidth,labelsep=custom}
 % 图注下方空行
 \captionsetup[figure]{aboveskip=0pt,belowskip=6pt}
 \captionsetup[table]{aboveskip=0pt,belowskip=0pt} % 表头是在表格上方的，所以不需要额外空隙
@@ -266,9 +262,9 @@
   {\fontsize{14pt}{14pt}\selectfont\heiti}
   {\thesubsection}{4pt}{}
 
-% 小四号黑体 12pt（不推荐，要求中禁止使用）
+% 四号黑体 14pt
 \titleformat{\subsubsection}[block]
-  {\fontsize{12pt}{12pt}\selectfont\heiti}
+  {\fontsize{14pt}{14pt}\selectfont\heiti}
   {\thesubsubsection}{4pt}{}
 
 % 下面的命令用于调节标题与左，上，下文，段落之间间距
@@ -344,17 +340,19 @@
 
 % 中文摘要
 \newenvironment{chineseabstract}{
+    \pagestyle{empty}
     \pdfbookmark{摘要}{chineseabstract}
-    \chapter*{\fontsize{16pt}{16pt}\selectfont{摘\chinesespace\chinesespace 要}}
+    \chapter*{\fontsize{16pt}{16pt}\selectfont\heiti{摘\chinesespace\chinesespace 要}}
     \thispagestyle{empty}
     \vspace{0.6cm}
 }{
   \clearpage
+  \pagestyle{fancy}
 }
 
 % 中文关键字
 \newcommand{\chinesekeyword}[1]{
-  \vspace{\baselineskip}
+  \par
   \noindent
     \begin{minipage}[t]{48pt}
       \noindent{\heiti{关键词\chinesecolon }}
@@ -366,17 +364,19 @@
 
 % 英文摘要
 \newenvironment{englishabstract}{
+    \pagestyle{empty}
     \pdfbookmark{ABSTRACT}{englishabstract}
     \chapter*{\fontsize{16pt}{16pt}\selectfont{\bfseries ABSTRACT}}
     \thispagestyle{empty}
     \vspace{0.6cm}
 }{
   \clearpage
+  \pagestyle{fancy}
 }
 
 % 英文关键字
 \newcommand{\englishkeyword}[1]{
-  \vspace{\baselineskip}
+  \par
   \noindent\begin{minipage}[t]{2.1cm}
       \noindent\textbf{Key words:}
     \end{minipage}
@@ -530,20 +530,22 @@
   
   \begingroup % 使用group括起来，单独设置行距
   \linespread{1.25} % 封面信息部分依旧保持1.25 latex行距，否则和模板对不上
+  \newcommand{\covertitlecell}[1]{\makebox[11.53cm][c]{\parbox[c]{12.4cm}{\centering\fontsize{15pt}{18pt}\selectfont ##1\par\vspace{4pt}}}}
+  \newcommand{\covercell}[1]{\parbox[c]{11.3cm}{\centering\fontsize{15pt}{18pt}\selectfont ##1\par\vspace{4pt}}}
   \begin{tabular}{>{\fontsize{16pt}{16pt}\kaiti}l
       >{\centering\arraybackslash\fontsize{15pt}{15pt}}
-      p{11.53cm}}
-    题\chinesespace\chinesespace 目{}{} & \thetitle \\
+      m{11.53cm}}
+    题\chinesespace\chinesespace 目{}{} & \covertitlecell{\thetitle} \\
     \cline{2-2}
-    专\chinesespace\chinesespace 业{}{} & \themajor \\
+    专\chinesespace\chinesespace 业{}{} & \covercell{\themajor} \\
     \cline{2-2}
-    学生姓名{}{} & \theadvisorsign  \\
+    学生姓名{}{} & \covercell{\theauthor}  \\
     \cline{2-2}
-    班级学号{}{} & {\large \thestudentclass\thestudentid} \\
+    班级学号{}{} & \covercell{{\large \thestudentclass\thestudentid}} \\
     \cline{2-2}
-    指导老师{}{} & \theadvisor \\
+    指导教师{}{} & \covercell{\theadvisorsign} \\
     \cline{2-2}
-    指导单位{}{} & \theschool \\
+    指导单位{}{} & \covercell{\theschool} \\
     \cline{2-2}
   \end{tabular}
   \endgroup
@@ -593,6 +595,7 @@
 
 % 目录页设置
 \newcommand{\thesistableofcontents}{
+  \pagestyle{empty}
   \setlength{\cftchapindent}{0pt} % 设置章标题的缩进
   \setlength{\cftsecindent}{12pt}  % 设置节标题的缩进为1个汉字字符
   \setlength{\cftsubsecindent}{24pt} % 设置小节标题的缩进2个汉字字符
@@ -609,6 +612,7 @@
   \addtocontents{toc}{\protect\vspace{0.6cm}} % 目录两个字下方的空行
   \tableofcontents
   \thispagestyle{empty}
+  \pagestyle{fancy}
 }
 
 % 章节名重构
@@ -621,7 +625,7 @@
 	\renewcommand\thesection{\arabic{section}}
 	\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
 	\setcounter{section}{0}
-	\chapter*{\fontsize{16pt}{16pt}\selectfont{结束语}}
+	\chapter*{\fontsize{16pt}{16pt}\selectfont\heiti{结束语}}
 	\addcontentsline{toc}{chapter}{结束语}
 	\markboth{结束语}{结束语}
 	\thispagestyle{fancy}
@@ -652,7 +656,7 @@
   \renewcommand\thesection{\arabic{section}}
   \addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
   \setcounter{section}{0}
-  \chapter*{\fontsize{16pt}{16pt}\selectfont{致\chinesespace\chinesespace 谢}}
+  \chapter*{\fontsize{16pt}{16pt}\selectfont\heiti{致\chinesespace\chinesespace 谢}}
   \addcontentsline{toc}{chapter}{致谢}
   \markboth{致谢}{致谢}
   \thispagestyle{fancy}
@@ -699,7 +703,7 @@
     {\thechapter}{30pt}{}
     \titlespacing{\chapter}{0pt}{0pt}{0pt}
     % 添加附录标题
-    \chapter*{\raggedleft\fontsize{16pt}{16pt}\selectfont{附录\thechapter}}
+    \chapter*{\raggedright\fontsize{16pt}{16pt}\selectfont\heiti{附录\thechapter}}
     \thispagestyle{fancy}
     \markboth{附录\thechapter}{附录\thechapter}
     % 添加到PDF目录
